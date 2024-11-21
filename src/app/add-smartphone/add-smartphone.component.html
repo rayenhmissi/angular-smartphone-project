@@ -1,0 +1,98 @@
+<div class="container mt-5">
+  <div>
+  <h2>Ajouter un smartphone :</h2>
+  </div>
+  <form [formGroup]="my_form">
+    <div class="form-group">
+    <label >ID smartphone</label>
+    <input type="text" formControlName="id"  [(ngModel)]="newsmartphone.idsmartphone"
+    name="idsmartphone" class="form-control" >
+    <span *ngIf="my_form.controls['id'].hasError('required')&& 
+    my_form.controls['id'].touched" class="text-danger"> 
+                      id est obligatoire 
+    </span>
+    </div>
+    <div class="form-group"> 
+      <label>Marque</label> 
+   <select class="form-control form-control-lg" id="idMar" name="idMar" 
+formControlName="marque" [(ngModel)]="newIdmar" required>         
+          <option *ngFor="let m of marques" [value]="m.idMar" >    
+                  {{m.nomMar}} 
+          </option> 
+    </select>
+    <span *ngIf="my_form.controls['marque'].hasError('required')&& 
+    my_form.controls['marque'].touched" class="text-danger"> 
+                      marque est obligatoire 
+    </span>
+ </div>
+    <div class="form-group" >
+    <label >Modele smartphone</label>
+    <input type="text" formControlName="modele" [(ngModel)]= "newsmartphone.modele"
+    name="modele" class="form-control" required>
+    <span *ngIf="my_form.controls['modele'].hasError('required')&& 
+    my_form.controls['modele'].touched" class="text-danger"> 
+                      modele est obligatoire 
+    </span>
+    <span *ngIf="my_form.controls['modele'].hasError('minlength')&& 
+    my_form.controls['modele'].touched" class="text-danger"> 
+            longueur de nom de modele est court
+    </span>
+    </div>
+    <div class="form-group" >
+      <label >email</label>
+      <input type="text" formControlName="email" [(ngModel)]= "newsmartphone.email"
+      name="email" class="form-control" required>
+      <span *ngIf="my_form.controls['email'].hasError('required')&& 
+      my_form.controls['email'].touched" class="text-danger"> 
+                        email est obligatoire 
+      </span> 
+      <span *ngIf="my_form.controls['email'].hasError('email')&& 
+      my_form.controls['email'].touched" class="text-danger"> 
+                        email est invalide 
+      </span>  
+      </div>  
+    <div class="form-group" >
+      <label >ram</label>
+      <input type="number" formControlName="ram" [(ngModel)]= "newsmartphone.ram"
+      name="ram" class="form-control" required>
+      <span *ngIf="my_form.controls['ram'].hasError('required')&& 
+      my_form.controls['ram'].touched" class="text-danger"> 
+                        ram est obligatoire 
+      </span>  
+      </div>
+      <div class="form-group" >
+        <label >stockage</label>
+        <input type="number" formControlName="stockage" [(ngModel)]= "newsmartphone.stockage"
+        name="stockage" class="form-control" required>
+        <span *ngIf="my_form.controls['stockage'].hasError('required')&& 
+        my_form.controls['stockage'].touched" class="text-danger"> 
+                          stockage est obligatoire 
+        </span>    
+        </div>      
+    <div class="form-group">
+    <label >Prix smartphone</label>
+    <input type="number" formControlName="prix" [(ngModel)]= "newsmartphone.prixsmartphone"
+    name="prixsmartphone" class="form-control" required>
+    <span *ngIf="my_form.controls['prix'].hasError('required')&& 
+    my_form.controls['prix'].touched" class="text-danger"> 
+                      prix est obligatoire 
+    </span>
+    <span *ngIf="my_form.controls['prix'].hasError('min')&& 
+    my_form.controls['prix'].touched" class="text-danger"> 
+                      prix doit étre superieur à 500 
+    </span>
+    </div>
+    <div class="form-group">
+    <label >Date de création</label>
+    <input type="date" formControlName="date" [(ngModel)]= "newsmartphone.dateCreation"
+    name="dateCreation" class="form-control" required>
+    <span *ngIf="my_form.controls['date'].hasError('required')&& 
+    my_form.controls['date'].touched" class="text-danger"> 
+                      date est obligatoire 
+    </span>
+    </div>
+    <div class="mt-2">
+    <button type="submit" (click)="ajoutersmartphone()"class="btn btn-success">Ajouter</button>
+    </div>
+    </form>
+    </div>

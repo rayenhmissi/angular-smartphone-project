@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="col-sm-4 col-md-4 col-lg-4 mb-4"> 
+        <label>Categories </label> 
+        <select class="form-control form-control-lg" id="idMar" name="idMar" 
+   [(ngModel)]="idMar"    (change)="onchange()">         
+              <option *ngFor="let m of marques" value="{{m.idMar}}">    
+                   {{m.nomMar}} 
+              </option> 
+        </select>                      
+   </div>
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped" border="1">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>marque</th>
+                        <th>modele</th>
+                        <th>email</th>
+                        <th>ram</th>
+                        <th>stockage</th>
+                        <th>prix</th>
+                        <th>date creation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr  *ngFor="let s of smart">
+                        <td> {{ s.idsmartphone }} </td>
+                        <td> {{ s.marquesmartphone?.nomMar }} </td>
+                        <td>{{ s.modele }}</td>
+                        <td>{{ s.email }}</td>
+                        <td>{{ s.ram }}</td>
+                        <td>{{ s.stockage }}</td>
+                        <td>{{ s.prixsmartphone }}</td>
+                        <td>{{ s.dateCreation | date:"dd-MM-yyyy" }}</td>
+                        <td><a class="btn btn-danger" (click)="supprimersmartphone(s)">supprimer</a></td>
+                        <td><a class="btn btn-success" [routerLink]="['/updatesmartphone',s.idsmartphone]">modifier</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
